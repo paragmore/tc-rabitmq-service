@@ -21,6 +21,7 @@
     "@fastify/swagger-ui": "^1.8.0",
     "@fastify/under-pressure": "^8.2.0",
     "@types/inversify": "^2.0.33",
+    "amqplib": "^0.10.3",
     "axios": "^1.4.0",
     "body-parser": "^1.20.2",
     "date-fns": "^2.30.0",
@@ -33,6 +34,7 @@
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
+    "@types/amqplib": "^0.10.1",
     "@types/dotenv": "^8.2.0",
     "@types/ejs": "^3.1.2",
     "@types/node": "^18.16.3",

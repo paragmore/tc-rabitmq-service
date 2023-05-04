@@ -6,8 +6,7 @@ import { RabitMqService } from './service/rabitmq.service';
 
 const container = new Container();
 
-container.bind<RabitMqService>(RabitMqService).toSelf();
-container.bind<RabitMqRepo>(RabitMqRepo).toSelf();
+container.bind<RabitMqService>(RabitMqService).toSelf().inSingletonScope();
 container.bind<RabitMqController>(RabitMqController).toSelf()
 
 export default container;

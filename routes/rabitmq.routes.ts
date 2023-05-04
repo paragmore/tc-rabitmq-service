@@ -5,11 +5,12 @@ import container from "../inversify.config";
 import { ApiHelper } from "../utils/ApiHelper";
 
 export default async (app: FastifyInstance) => {
-  const rabitmqController = container.resolve<RabitMqController>(RabitMqController)
+  const rabitmqController =
+    container.resolve<RabitMqController>(RabitMqController);
 
-  ApiHelper.get<{}, {}, {}>(
+  ApiHelper.post<{}, {}, {}, {}>(
     app,
-    "/",
-    rabitmqController.rabitmqController.bind(rabitmqController)
+    "/sendMessage",
+    rabitmqController.sendMessage.bind(rabitmqController)
   );
 };

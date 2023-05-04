@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 import { ConnectionOptions } from "tls";
 
 export const connectMongoDB = () => {
-    console.log('hereee')
   if (!process.env.MONGODB_URI) {
     console.log("MONGODB_URI not present");
     return;
