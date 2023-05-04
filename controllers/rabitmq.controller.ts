@@ -8,8 +8,12 @@ export class RabitMqController {
   constructor(@inject(RabitMqService) private rabitmqService: RabitMqService) {}
   sendMessage: ApiHelperHandler<SendMessageRequestI, {}, {}, {}, IReply> =
     async (request, reply) => {
+      const {body} = request
+      if(!body?.message || !body.queue){
+        return ApiHelper.missingParameters(reply)
+      }
       try {
-        await this.rabitmqService.sendMessage("Hello Rabit");
+        await this.rabitmqService.sendMessage(body?.message, body?.queue);
         return ApiHelper.success(reply, { hello: "world" });
       } catch (error) {
         console.error(

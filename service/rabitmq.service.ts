@@ -22,7 +22,7 @@ export class RabitMqService {
     return this.channel;
   }
 
-  async sendMessage(message: string): Promise<boolean | ApiError> {
+  async sendMessage(message: string, queue: string): Promise<boolean | ApiError> {
     if (!this.channel) {
       return new ApiError(
         "RabitMqService : sendMessage => Channel not found",
@@ -30,7 +30,7 @@ export class RabitMqService {
       );
     }
     try {
-      const response =  this.channel.sendToQueue("my-queue", Buffer.from(message));
+      const response =  this.channel.sendToQueue(queue, Buffer.from(message));
       console.log('sent',response)
       return true;
     } catch (error) {
